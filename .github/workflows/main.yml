@@ -8,7 +8,8 @@ on:
         default: 'prod'
         type: choice
         options:
-          - prod 
+          - prd
+          - non-prd
   
 permissions:
     id-token: write   # This is required for requesting the JWT..
