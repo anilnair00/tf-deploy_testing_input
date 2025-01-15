@@ -1,0 +1,9 @@
+acnp-crew-ops-dof:
+    - acl
+    - orchestration
+    - rules-engine
+acnp-shared-component:
+    - idempotency
+acnp-communication-channel-hub:
+    - producer-service
+    - processor-service

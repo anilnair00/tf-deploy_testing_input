@@ -1,0 +1,6 @@
+org_id                        = "ACITOperationsDigitalTeam"
+project_id                    = "notifications"
+dev_pipeline_name             = "dev-cdk-deploy"
+devops_repository_connector   = "account.acdevopsgithubharnessconnectorssh"
+harness_templates_repo_name   = "ac-it-notifications-harness-templates"
+harness_templates_branch_name = "main"

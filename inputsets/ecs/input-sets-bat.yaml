@@ -1,0 +1,30 @@
+acnp-crew-ops-dof:
+  acl:
+    - name: acl
+      aws_account_id: "156041410209"
+      environment: bat
+      region: ca-central-1
+      ecr_repository: acnp-crew-ops-fg-acl-ecr-repository-bat-cac1
+      ecs_cluster: ac-np-app-fg-cluster-bat-cac1
+      limit_memory: 4G
+      limit_cpu: "2"
+  
+  orchestration:
+    - name: orchestration
+      aws_account_id: "156041410209"
+      environment: bat
+      region: ca-central-1
+      ecr_repository: acnp-crew-ops-fg-orchestration-ecr-repository-bat-cac1
+      ecs_cluster: ac-np-app-fg-cluster-bat-cac1
+      limit_memory: 4G
+      limit_cpu: "2"
+  
+  rules-engine:
+    - name: rules-engine
+      aws_account_id: "156041410209"
+      environment: bat
+      region: ca-central-1
+      ecr_repository: acnp-crew-ops-fg-rules-engine-ecr-repository-bat-cac1
+      ecs_cluster: ac-np-app-fg-cluster-bat-cac1
+      limit_memory: 4G
+      limit_cpu: "2"

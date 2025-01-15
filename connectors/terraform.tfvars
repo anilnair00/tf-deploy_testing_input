@@ -1,0 +1,14 @@
+org_id                                   = "ACITOperationsDigitalTeam"
+project_id                               = "notifications"
+envs                                     = ["int", "bat", "preprod", "prod"]
+account_names                            = ["ac-notification-platform-int", "ac-notification-platform-bat", "ac-notification-platform-preprod", "ac-notification-platform-prod"]
+cross_account_role_arns                  = ["arn:aws:iam::148761674185:role/harness-np-int-app-deployment-role", "arn:aws:iam::156041410209:role/harness-np-bat-app-deployment-role", "arn:aws:iam::183631350091:role/harness-np-preprod-app-deployment-role", "arn:aws:iam::222634398071:role/harness-np-prod-app-deployment-role"]
+kubernetes_delegate_nonprod              = "operations-delegate-nonprod"
+kubernetes_delegate_connector_nonprod    = "operations_eks_connector_nonprod"
+kubernetes_delegate_connector_ns_nonprod = "harness-operations-nonprod-ng"
+kubernetes_delegate_connector_sa_nonprod = "operations-delegate-nonprod-sa"
+kubernetes_delegate_prod                 = "operations-delegate-prod"
+kubernetes_delegate_connector_prod       = "operations_eks_connector_prod"
+kubernetes_delegate_connector_ns_prod    = "harness-operations-prod-ng"
+kubernetes_delegate_connector_sa_prod    = "operations-delegate-prod-sa"
+region                                   = "us-east-1"

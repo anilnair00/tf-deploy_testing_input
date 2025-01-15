@@ -1,0 +1,17 @@
+acnp-crew-ops-dof:
+  acl:
+    - target_branch_starts_with: feature
+  orchestration:
+    - target_branch_starts_with: feature
+  rules-engine:
+    - target_branch_starts_with: feature
+
+acnp-shared-component:
+  idempotency:
+    - target_branch_starts_with: feature
+
+acnp-communication-channel-hub:
+  producer-service:
+    - target_branch_starts_with: feature
+  processor-service:
+    - target_branch_starts_with: feature

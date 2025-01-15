@@ -1,0 +1,7 @@
+org_id                = "ACITOperationsDigitalTeam"
+project_id            = "notifications"
+feature_pipeline_name = "feature-ecs-deploy"
+dev_pipeline_name     = "dev-ecs-deploy"
+bat_pipeline_name     = "bat-ecs-deploy"
+release_pipeline_name = "release-ecs-deploy"
+main_pipeline_name    = "main-ecs-deploy"
