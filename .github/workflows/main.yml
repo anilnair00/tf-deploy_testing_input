@@ -20,10 +20,10 @@ permissions:
 jobs:
   harness_plan:
     name: Harness Plan
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
     uses: "./.github/workflows/plan.yml"
     with:
-      gh_environment: prod
+      gh_environment: prd
       # workdir_path: 'organizations'
     secrets:
       AWS_REGION: ${{ vars.AWS_REGION }}
@@ -39,7 +39,7 @@ jobs:
     needs: harness_plan
     uses: "./.github/workflows/apply.yml"
     with:
-      gh_environment: prod
+      gh_environment: prd
       # workdir_path: 'organizations'
     secrets:
       AWS_REGION: ${{ vars.AWS_REGION }}
