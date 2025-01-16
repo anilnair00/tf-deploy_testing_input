@@ -26,13 +26,19 @@ jobs:
       gh_environment: prd
       # workdir_path: 'organizations'
     secrets:
-      AWS_REGION: ${{ vars.AWS_REGION }}
-      AWS_OIDC_ROLE_ARN_NONPROD: ${{ vars.AC_ENTERPRISETOOLS_PROD_INFRA_OIDC_ROLE_ARN }}
-      S3_BACKEND_ROLE_PROD_ARN: ${{ vars.S3_BACKEND_ROLE_PROD_ARN }}
-      TF_VAR_HARNESS_ENDPOINT: ${{ vars.TF_VAR_HARNESS_ENDPOINT }}
-      TF_VAR_HARNESS_ACCOUNT_ID: ${{ vars.TF_VAR_HARNESS_ACCOUNT_ID }}
+      # AWS_REGION: ${{ vars.AWS_REGION }}
+      # AWS_OIDC_ROLE_ARN_NONPROD: ${{ vars.AC_ENTERPRISETOOLS_PROD_INFRA_OIDC_ROLE_ARN }}
+      # S3_BACKEND_ROLE_PROD_ARN: ${{ vars.S3_BACKEND_ROLE_PROD_ARN }}
+      TF_VAR_HARNESS_ENDPOINT: ${{ secrets.TF_VAR_HARNESS_ENDPOINT }}
+      TF_VAR_HARNESS_ACCOUNT_ID: ${{ secrets.TF_VAR_HARNESS_ACCOUNT_ID }}
       TF_VAR_HARNESS_PLATFORM_API_KEY: ${{ secrets.TF_VAR_HARNESS_PLATFORM_API_KEY }}
       AC_HARNESS_TF_MODULES_PVT_KEY: ${{ secrets.AC_HARNESS_TF_MODULES_PVT_KEY }}
+      backendAzureRmUseEnvironmentVariablesForAuthentication: true
+      backendServiceArm: 'api'
+      backendAzureRmResourceGroupName: 'cloud-shell-storage-westeurope'
+      backendAzureRmStorageAccountName: 'csb1003bffda9ed3d65'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'prod.tfstate'
 
   harness_apply:
     name: Harness Apply
