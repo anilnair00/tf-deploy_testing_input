@@ -16,15 +16,15 @@ on:
         default: './'
 
     secrets:
-      AWS_REGION:
-        description: 'AWS Region'
-        required: true
-      AWS_OIDC_ROLE_ARN_NONPROD:
-        description: 'OIDC ROle'
-        required: true
-      S3_BACKEND_ROLE_PROD_ARN:
-        description: 'S3 BACKEND ROLE ARN'
-        required: true
+      # AWS_REGION:
+      #   description: 'AWS Region'
+      #   required: true
+      # AWS_OIDC_ROLE_ARN_NONPROD:
+      #   description: 'OIDC ROle'
+      #   required: true
+      # S3_BACKEND_ROLE_PROD_ARN:
+      #   description: 'S3 BACKEND ROLE ARN'
+      #   required: true
       TF_VAR_HARNESS_ENDPOINT:
         description: 'HARNESS_ENDPOINT'
         required: true
@@ -36,7 +36,24 @@ on:
         required: true
       AC_HARNESS_TF_MODULES_PVT_KEY:
         description: 'AC_HARNESS_TF_MODULES_PVT_KEY'
-        required: true     
+      backendAzureRmUseEnvironmentVariablesForAuthentication:
+        description: 'test'
+        required: true
+      backendServiceArm:
+        description: 'HARNESS_ACCOUNT_ID'
+        required: true
+      backendAzureRmResourceGroupName:
+        description: 'HARNESS_PLATFORM_API_KEY'
+        required: true
+      backendAzureRmStorageAccountName:
+        description: 'AC_HARNESS_TF_MODULES_PVT_KEY'
+        required: true   
+      backendAzureRmContainerName:
+        description: 'HARNESS_PLATFORM_API_KEY'
+        required: true
+      backendAzureRmKey:
+        description: 'AC_HARNESS_TF_MODULES_PVT_KEY'
+        required: true   
 
   workflow_dispatch:
 
@@ -69,12 +86,20 @@ jobs:
           echo "${{ secrets.AC_HARNESS_TF_MODULES_PVT_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-      - name: Configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - uses: azure/login@v1
         with:
-          aws-region: "${{ secrets.AWS_REGION }}"
-          role-to-assume: "${{ secrets.AWS_OIDC_ROLE_ARN_NONPROD }}"
-          role-session-name: Terraform-Deployment
+         client-id: ${{ secrets.DEV_AZURE_CLIENT_ID }}
+         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+         # subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+         allow-no-subscriptions: true
+          # creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+      # - name: Configure aws credentials
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     aws-region: "${{ secrets.AWS_REGION }}"
+      #     role-to-assume: "${{ secrets.AWS_OIDC_ROLE_ARN_NONPROD }}"
+      #     role-session-name: Terraform-Deployment
 
       - name: Terraform Plan Pipelines
         working-directory: 'pipelines/ecs'
