@@ -6,7 +6,6 @@ terraform {
     container_name       = "tfstate"
     key                  = "dev.tfstate"
   }
-}
   required_providers {
     harness = {
       source = "harness/harness"
